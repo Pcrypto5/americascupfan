@@ -83,7 +83,7 @@ const Index = () => {
       <Hero 
         title="America's Cup Latest"
         subtitle="Stay updated with the latest news, videos, and stories from the world's premier sailing competition."
-        backgroundImage="/public/images/napoli-notte-hd-1600x600.jpg"
+        backgroundImage="/images/napoli-notte-hd-1600x600.jpg"
         buttonLabel="Watch Highlights"
         buttonLink="#videos"
       />
