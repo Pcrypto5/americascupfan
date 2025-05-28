@@ -10,43 +10,44 @@ const History = () => {
   }, []);
 
   const timelineEvents = [
-    {
-      year: "1851",
-      title: "The First America's Cup",
-      description: "The schooner America, after which the trophy was named, won the Royal Yacht Squadron's 100 Guinea Cup...",
-      image: "/public/images/The_America_Schooner_Yacht_-_New_York_Yacht_Club.jpg"
-    },
-    {
-      year: "1983",
-      title: "Australia II Breaks the Streak",
-      description: "Australia II defeated Dennis Conner's Liberty to win the America's Cup...",
-      image: "/public/images/AustraliaII.jpg"
-    },
-    {
-      year: "2010",
-      title: "The Era of Multihulls",
-      description: "BMW Oracle Racing's USA-17, a 90-foot trimaran, defeated Alinghi's catamaran...",
-      image: "/public/images/trimaranoOracle.jpg"
-    },
-    {
-      year: "2013",
-      title: "Oracle Team USA's Comeback",
-      description: "Oracle Team USA completed one of the greatest comebacks in sports history...",
-      image: "/public/images/2013_America's_Cup,_race.jpg"
-    },
-    {
-      year: "2017",
-      title: "New Zealand Takes the Cup",
-      description: "Emirates Team New Zealand defeated Oracle Team USA to win the 35th America's Cup...",
-      image: "/public/images/emirates-team-new-zealand-wins-america's-cup.jpg"
-    },
-    {
-      year: "2021",
-      title: "New Zealand Defends",
-      description: "Emirates Team New Zealand successfully defended the America's Cup...",
-      image: "/public/images/2021.jpg"
-    },
-  ];
+  {
+    year: "1851",
+    title: "The First America's Cup",
+    description: "The schooner America, after which the trophy was named, won the Royal Yacht Squadron's 100 Guinea Cup...",
+    image: "/images/The_America_Schooner_Yacht_-_New_York_Yacht_Club.jpg"
+  },
+  {
+    year: "1983",
+    title: "Australia II Breaks the Streak",
+    description: "Australia II defeated Dennis Conner's Liberty to win the America's Cup...",
+    image: "/images/AustraliaII.jpg"
+  },
+  {
+    year: "2010",
+    title: "The Era of Multihulls",
+    description: "BMW Oracle Racing's USA-17, a 90-foot trimaran, defeated Alinghi's catamaran...",
+    image: "/images/trimaranoOracle.jpg"
+  },
+  {
+    year: "2013",
+    title: "Oracle Team USA's Comeback",
+    description: "Oracle Team USA completed one of the greatest comebacks in sports history...",
+    image: "/images/2013_America's_Cup,_race.jpg"
+  },
+  {
+    year: "2017",
+    title: "New Zealand Takes the Cup",
+    description: "Emirates Team New Zealand defeated Oracle Team USA to win the 35th America's Cup...",
+    image: "/images/emirates-team-new-zealand-wins-america's-cup.jpg"
+  },
+  {
+    year: "2021",
+    title: "New Zealand Defends",
+    description: "Emirates Team New Zealand successfully defended the America's Cup...",
+    image: "/images/2021.jpg"
+  },
+];
+
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -55,7 +56,7 @@ const History = () => {
       <Hero 
         title="The History of America's Cup"
         subtitle="Explore the rich heritage of the world's oldest international sporting trophy, dating back to 1851."
-        backgroundImage="/public/images/yyny.jpg"
+        backgroundImage="/images/yyny.jpg"
       />
 
       <section className="section-padding bg-white">

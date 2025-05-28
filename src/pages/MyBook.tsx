@@ -62,7 +62,7 @@ const MyBook = () => {
       <Hero 
         title="Oltre la coppa c'è di più"
         subtitle="Storia, leggende e segreti della sfida velica più antica del mondo"
-        backgroundImage="public/images/acqua-di-mare-profumo-1.jpg"
+        backgroundImage="/images/acqua-di-mare-profumo-1.jpg"
       />
 
       <section className="section-padding bg-white">
