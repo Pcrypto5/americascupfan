@@ -76,7 +76,7 @@ const Subscribe = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3001/api/subscribe", {
+      const res = await fetch("https://hook.eu2.make.com/mm2z3ibycy7qwso5vj3w2b3ipqwqk73m", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
