@@ -57,7 +57,7 @@ const App = () => {
             <Route path="/history" element={<History />} />
             <Route path="/my-book" element={<MyBook />} />
             <Route path="/coming-soon" element={<ComingSoon />} />
-            <Route path="/subscribe" element={<Subscribe />} />
+            <Route path="/subscribe" element={<subscribe />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/cookies" element={<Cookies />} />
