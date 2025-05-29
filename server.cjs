@@ -5,22 +5,31 @@ const fs = require("fs");
 const cors = require("cors");
 const { v4: uuidv4 } = require("uuid");
 const axios = require("axios");
+const path = require("path");
 const app = express();
-
 
 app.use(cors());
 app.use(express.json());
 
-const FILE_PATH = "subscribers.json";
+const FILE_PATH = path.join(__dirname, "subscribers.json");
 const BASE_URL = process.env.BASE_URL || "http://localhost:8080";
 
 function readData() {
-  if (!fs.existsSync(FILE_PATH)) return [];
-  return JSON.parse(fs.readFileSync(FILE_PATH));
+  try {
+    if (!fs.existsSync(FILE_PATH)) return [];
+    return JSON.parse(fs.readFileSync(FILE_PATH, "utf-8"));
+  } catch (err) {
+    console.error("Error reading subscribers.json:", err);
+    return [];
+  }
 }
 
 function writeData(data) {
-  fs.writeFileSync(FILE_PATH, JSON.stringify(data, null, 2));
+  try {
+    fs.writeFileSync(FILE_PATH, JSON.stringify(data, null, 2));
+  } catch (err) {
+    console.error("Error writing to subscribers.json:", err);
+  }
 }
 
 app.post("/api/subscribe", async (req, res) => {
@@ -81,8 +90,7 @@ app.get("/confirm/:token", (req, res) => {
   res.send(`<h2>Thank you ${user.firstName}, your subscription is confirmed!</h2>`);
 });
 
-  const PORT = process.env.PORT || 3001;
-  app.listen(PORT, () => {
-    console.log(`✅ Server running on port ${PORT}`);
-  });
-
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
