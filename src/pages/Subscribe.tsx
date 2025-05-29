@@ -76,7 +76,7 @@ const Subscribe = () => {
     };
 
     try {
-      const res = await fetch("https://hook.eu2.make.com/mm2z3ibycy7qwso5vj3w2b3ipqwqk73m", {
+      const res = await fetch("https://americascupfan-production.up.railway.app/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)

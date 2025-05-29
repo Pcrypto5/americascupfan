@@ -1,38 +1,86 @@
+// server.cjs (CommonJS)
+require("dotenv").config();
 const express = require("express");
 const fs = require("fs");
-const path = require("path");
 const cors = require("cors");
-
+const { v4: uuidv4 } = require("uuid");
+const axios = require("axios");
 const app = express();
-const PORT = 3001;
+
 
 app.use(cors());
 app.use(express.json());
 
-const filePath = path.join(__dirname, "subscribers.json");
+const FILE_PATH = "subscribers.json";
+const BASE_URL = process.env.BASE_URL || "http://localhost:8080";
 
-// Crea il file se non esiste
-if (!fs.existsSync(filePath)) {
-  fs.writeFileSync(filePath, "[]", "utf8");
+function readData() {
+  if (!fs.existsSync(FILE_PATH)) return [];
+  return JSON.parse(fs.readFileSync(FILE_PATH));
 }
 
-// Endpoint POST per salvataggio iscrizioni
-app.post("/api/subscribe", (req, res) => {
-  const subscriber = {
-    ...req.body,
-    timestamp: new Date().toISOString(),
+function writeData(data) {
+  fs.writeFileSync(FILE_PATH, JSON.stringify(data, null, 2));
+}
+
+app.post("/api/subscribe", async (req, res) => {
+  const { firstName, lastName, email, interests } = req.body;
+  const token = uuidv4();
+  const timestamp = new Date().toISOString();
+
+  const newSubscriber = {
+    firstName,
+    lastName,
+    email,
+    interests,
+    confirmed: false,
+    token,
+    timestamp,
   };
 
-  const currentData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  currentData.push(subscriber);
-  fs.writeFileSync(filePath, JSON.stringify(currentData, null, 2), "utf8");
+  const data = readData();
+  data.push(newSubscriber);
+  writeData(data);
 
-  console.log("✅ Nuovo iscritto salvato:", subscriber);
-  res.status(200).json({ message: "Subscription saved successfully." });
+  try {
+    await axios.post("https://api.brevo.com/v3/smtp/email", {
+      sender: { name: "America's Cup Fans", email: "noreply@americascupfan.com" },
+      to: [{ email, name: `${firstName} ${lastName}` }],
+      subject: "Please confirm your subscription",
+      htmlContent: `
+        <h3>Welcome aboard, ${firstName}!</h3>
+        <p>Click the link below to confirm your subscription:</p>
+        <a href='${BASE_URL}/confirm/${token}'>Confirm Subscription</a>
+      `,
+    }, {
+      headers: {
+        "api-key": process.env.BREVO_API_KEY,
+        "Content-Type": "application/json"
+      }
+    });
+
+    res.status(200).json({ message: "Confirmation email sent." });
+  } catch (error) {
+    console.error("Brevo error:", error.message);
+    res.status(500).json({ error: "Failed to send confirmation email." });
+  }
 });
 
+app.get("/confirm/:token", (req, res) => {
+  const { token } = req.params;
+  const data = readData();
+  const user = data.find(u => u.token === token);
 
-// Avvio server
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  if (!user) {
+    return res.status(404).send("Invalid token.");
+  }
+
+  user.confirmed = true;
+  writeData(data);
+
+  res.send(`<h2>Thank you ${user.firstName}, your subscription is confirmed!</h2>`);
+});
+
+app.listen(3001, () => {
+  console.log("✅ Server running at http://localhost:3001");
 });
