@@ -81,6 +81,8 @@ app.get("/confirm/:token", (req, res) => {
   res.send(`<h2>Thank you ${user.firstName}, your subscription is confirmed!</h2>`);
 });
 
-app.listen(3001, () => {
-  console.log("✅ Server running at http://localhost:3001");
-});
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+  });
+
