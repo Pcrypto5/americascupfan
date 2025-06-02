@@ -206,9 +206,7 @@ app.get("/health", (req, res) => {
       hasBrevoKey: !!process.env.BREVO_API_KEY
     }
   });
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-});
+
 
 });
 
