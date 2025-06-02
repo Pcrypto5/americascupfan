@@ -14,6 +14,7 @@ app.use(express.json());
 const FILE_PATH = path.join(__dirname, "subscribers.json");
 const BASE_URL = process.env.BASE_URL || "http://localhost:8080";
 
+
 // Debug: log delle variabili d'ambiente all'avvio
 console.log("🔧 Environment check:");
 console.log("- BASE_URL:", BASE_URL);
@@ -207,12 +208,7 @@ app.get("/health", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-  console.log(`🌐 Health check: ${BASE_URL}/health`);
-  console.log(`📊 Subscribers list: ${BASE_URL}/api/subscribers`);
-});
+
 
 // Export necessario per Railway
 module.exports = app;
