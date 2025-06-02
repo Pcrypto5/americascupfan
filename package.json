@@ -9,7 +9,7 @@
   "build:dev": "vite build --mode development",
   "lint": "eslint .",
   "preview": "vite preview",
-  "start": "node api/server.cjs"
+  "start": "node api/index.js"
 },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -87,7 +87,7 @@
     "vite": "^5.4.1"
   },
   "description": "## Project info",
-  "main": "api/server.cjs",
+  "main": "api/index.js",
   "keywords": [],
   "author": "",
   "license": "ISC"

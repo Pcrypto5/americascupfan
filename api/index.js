@@ -41,7 +41,7 @@ function writeData(data) {
     console.log(`💾 Saved ${data.length} subscribers to file`);
   } catch (err) {
     console.error("❌ Error writing to subscribers.json:", err);
-    throw err; // Rilancia l'errore per gestirlo nel chiamante
+    throw err;
   }
 }
 
@@ -60,10 +60,9 @@ app.get("/api/subscribers", (req, res) => {
 
 app.post("/api/subscribe", async (req, res) => {
   console.log("📨 New subscription request:", req.body);
-  
+
   const { firstName, lastName, email, interests } = req.body;
-  
-  // Validazione input
+
   if (!firstName || !lastName || !email) {
     console.log("❌ Missing required fields");
     return res.status(400).json({ error: "Missing required fields" });
@@ -71,7 +70,7 @@ app.post("/api/subscribe", async (req, res) => {
 
   const token = uuidv4();
   const timestamp = new Date().toISOString();
-  
+
   const newSubscriber = {
     firstName,
     lastName,
@@ -84,23 +83,19 @@ app.post("/api/subscribe", async (req, res) => {
 
   try {
     const data = readData();
-    
-    // Controlla se l'email esiste già
     const existingUser = data.find(user => user.email === email);
     if (existingUser) {
       console.log("⚠️ Email already exists:", email);
       return res.status(400).json({ error: "Email already registered" });
     }
-    
+
     data.push(newSubscriber);
     writeData(data);
-    
-    console.log("✅ Subscriber saved locally");
 
-    // Invia email di conferma
+    console.log("✅ Subscriber saved locally");
     console.log("📧 Sending confirmation email via Brevo...");
-    
-    const brevoResponse = await axios.post("https://api.brevo.com/v3/smtp/email", {
+
+    await axios.post("https://api.brevo.com/v3/smtp/email", {
       sender: { 
         name: "America's Cup Fans", 
         email: "noreply@americascupfan.com" 
@@ -137,9 +132,8 @@ app.post("/api/subscribe", async (req, res) => {
 
   } catch (error) {
     console.error("❌ Error in subscription process:");
-    
+
     if (error.response) {
-      // Errore da Brevo
       console.error("Brevo API error:", {
         status: error.response.status,
         data: error.response.data
@@ -149,14 +143,12 @@ app.post("/api/subscribe", async (req, res) => {
         details: error.response.data
       });
     } else if (error.code === 'ENOENT' || error.message.includes('ENOENT')) {
-      // Errore file system
       console.error("File system error:", error.message);
       res.status(500).json({ 
         error: "Failed to save subscription data",
         details: "File system not writable"
       });
     } else {
-      // Altri errori
       console.error("Generic error:", error.message);
       res.status(500).json({ 
         error: "Internal server error",
@@ -169,10 +161,10 @@ app.post("/api/subscribe", async (req, res) => {
 app.get("/confirm/:token", (req, res) => {
   const { token } = req.params;
   console.log("🔗 Confirmation request for token:", token);
-  
+
   const data = readData();
   const user = data.find(u => u.token === token);
-  
+
   if (!user) {
     console.log("❌ Invalid token:", token);
     return res.status(404).send(`
@@ -192,9 +184,9 @@ app.get("/confirm/:token", (req, res) => {
   user.confirmed = true;
   user.confirmedAt = new Date().toISOString();
   writeData(data);
-  
+
   console.log("✅ User confirmed:", user.email);
-  
+
   res.send(`
     <h2>Thank you ${user.firstName}!</h2>
     <p>Your subscription to America's Cup Fan newsletter is now confirmed.</p>
@@ -202,7 +194,6 @@ app.get("/confirm/:token", (req, res) => {
   `);
 });
 
-// Health check endpoint
 app.get("/health", (req, res) => {
   const data = readData();
   res.json({
@@ -222,3 +213,6 @@ app.listen(PORT, () => {
   console.log(`🌐 Health check: ${BASE_URL}/health`);
   console.log(`📊 Subscribers list: ${BASE_URL}/api/subscribers`);
 });
+
+// Export necessario per Railway
+module.exports = app;
