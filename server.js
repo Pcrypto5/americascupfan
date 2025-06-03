@@ -1,12 +1,11 @@
 // server.js
 import app from "./api/index.js";
 
-// PRIMA: const PORT = process.env.PORT || 8080;
-// ORA:     const PORT = process.env.PORT;
-
+// NON USARE più "process.env.PORT || 3001"
 const PORT = process.env.PORT;
+
 if (!PORT) {
-  console.error("❌ Errore: non ho trovato la variabile di ambiente PORT.");
+  console.error("❌ Errore: process.env.PORT non è definito");
   process.exit(1);
 }
 
