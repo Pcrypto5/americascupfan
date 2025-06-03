@@ -1,4 +1,3 @@
-// api/index.js (ESM-compliant)
 import dotenv from "dotenv";
 import express from "express";
 import fs from "fs";
@@ -18,10 +17,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Serve static React frontend from dist/
+app.use("/", express.static(path.join(__dirname, "../dist")));
+
 const FILE_PATH = path.join(__dirname, "subscribers.json");
 const BASE_URL = process.env.BASE_URL || "http://localhost:8080";
 
-// Debug
+// ✅ Debug env
 console.log("🔧 Environment check:");
 console.log("- BASE_URL:", BASE_URL);
 console.log("- BREVO_API_KEY:", process.env.BREVO_API_KEY ? "✅ Set" : "❌ Missing");
