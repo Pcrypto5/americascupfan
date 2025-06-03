@@ -61,6 +61,7 @@ app.get("/api/subscribers", (req, res) => {
       email: s.email,
       confirmed: s.confirmed,
       timestamp: s.timestamp,
+      token: s.token         // <--- ora includiamo anche il token
       
     }))
   });
