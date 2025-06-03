@@ -57,11 +57,12 @@ app.get("/api/subscribers", (req, res) => {
   const data = readData();
   res.json({
     count: data.length,
-    subscribers: data.map((s) => ({
+    subscribers: data.map(s => ({
       email: s.email,
       confirmed: s.confirmed,
       timestamp: s.timestamp,
-    })),
+      token: s.token      // <-- ora viene incluso il token
+    }))
   });
 });
 
