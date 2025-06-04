@@ -100,7 +100,7 @@ app.post("/api/subscribe", async (req, res) => {
     await axios.post("https://api.brevo.com/v3/smtp/email", {
       sender: {
         name: "America's Cup Fans",
-        email: "noreply@americascupfan.com"
+        email: "infonews@bstac.tech"
       },
       to: [{
         email,
