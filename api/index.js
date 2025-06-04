@@ -107,7 +107,7 @@ app.post("/api/subscribe", async (req, res) => {
       {
         sender: {
           name: "America's Cup Fans",
-          email: "noreply@americascupfan.com",
+          email: "infonews@bstac.tech",
         },
         to: [
           {
