@@ -16,15 +16,33 @@ import Cookies from "./pages/Cookies";
 
 const queryClient = new QueryClient();
 
+const GA_MEASUREMENT_ID = "G-8DPCRZ2JVX";
+
+const loadGoogleAnalytics = () => {
+  const script1 = document.createElement("script");
+  script1.async = true;
+  script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(script1);
+
+  const script2 = document.createElement("script");
+  script2.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${GA_MEASUREMENT_ID}');
+  `;
+  document.head.appendChild(script2);
+};
+
 const App = () => {
   useEffect(() => {
-    // Carica CSS
+    // Carica stile CookieConsent
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css";
     document.head.appendChild(link);
 
-    // Carica script
+    // Carica script CookieConsent
     const script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js";
     script.onload = () => {
@@ -40,6 +58,16 @@ const App = () => {
           dismiss: "Accetta",
           link: "Leggi di più",
           href: "/cookies"
+        },
+        onInitialise: function (status: string) {
+          if (status === "allow") {
+            loadGoogleAnalytics();
+          }
+        },
+        onStatusChange: function (status: string) {
+          if (status === "allow") {
+            loadGoogleAnalytics();
+          }
         }
       });
     };
