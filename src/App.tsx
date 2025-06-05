@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import History from "./pages/History";
 import MyBook from "./pages/MyBook";
@@ -17,8 +17,26 @@ import Cookies from "./pages/Cookies";
 const queryClient = new QueryClient();
 
 const GA_MEASUREMENT_ID = "G-8DPCRZ2JVX";
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
 
+// --- Analytics + Consent Mode ---
 const loadGoogleAnalytics = () => {
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(...args: any[]) {
+    window.dataLayer.push(args);
+  }
+
+  gtag("consent", "update", {
+    analytics_storage: "granted",
+    ad_storage: "granted"
+  });
+
   const script1 = document.createElement("script");
   script1.async = true;
   script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
@@ -34,15 +52,44 @@ const loadGoogleAnalytics = () => {
   document.head.appendChild(script2);
 };
 
+// --- Tracciamento dinamico delle pageview ---
+const usePageTracking = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag("event", "page_view", {
+        page_path: location.pathname
+      });
+    }
+  }, [location.pathname]);
+};
+
+const AppRoutes = () => {
+  usePageTracking();
+
+  return (
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/history" element={<History />} />
+      <Route path="/my-book" element={<MyBook />} />
+      <Route path="/coming-soon" element={<ComingSoon />} />
+      <Route path="/subscribe" element={<Subscribe />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
+      <Route path="/cookies" element={<Cookies />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
+
 const App = () => {
   useEffect(() => {
-    // Carica stile CookieConsent
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css";
     document.head.appendChild(link);
 
-    // Carica script CookieConsent
     const script = document.createElement("script");
     script.src = "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js";
     script.onload = () => {
@@ -60,14 +107,10 @@ const App = () => {
           href: "/cookies"
         },
         onInitialise: function (status: string) {
-          if (status === "allow") {
-            loadGoogleAnalytics();
-          }
+          if (status === "allow") loadGoogleAnalytics();
         },
         onStatusChange: function (status: string) {
-          if (status === "allow") {
-            loadGoogleAnalytics();
-          }
+          if (status === "allow") loadGoogleAnalytics();
         }
       });
     };
@@ -80,17 +123,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/history" element={<History />} />
-            <Route path="/my-book" element={<MyBook />} />
-            <Route path="/coming-soon" element={<ComingSoon />} />
-            <Route path="/subscribe" element={<Subscribe />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/cookies" element={<Cookies />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppRoutes />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
