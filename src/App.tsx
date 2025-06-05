@@ -63,8 +63,29 @@ const usePageTracking = () => {
       });
     }
   }, [location.pathname]);
-};
 
+// Traccia scroll oltre il 50%
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      if (scrollPosition / pageHeight > 0.5) {
+        if (window.gtag) {
+          window.gtag("event", "scroll_50", {
+            event_category: "Engagement",
+            event_label: location.pathname,
+          });
+        }
+
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
+};
 const AppRoutes = () => {
   usePageTracking();
 
