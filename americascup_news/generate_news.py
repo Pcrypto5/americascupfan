@@ -39,3 +39,5 @@ with open(archive_path, "w", encoding="utf-8") as f:
 
 print(f"[✅] latest_articles.json aggiornato")
 print(f"[📦] Archivio aggiornato in archive/{month_id}.json")
+print(f"[📄] Articoli trovati: {len(articles)}")
+

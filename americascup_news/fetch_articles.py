@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 import os
 import openai
 import requests
@@ -64,7 +65,8 @@ def fetch_articles():
             seen_urls.add(entry.link)
 
             title = entry.title
-            excerpt = entry.get("summary", "")[:240]
+            excerpt_raw = entry.get("summary", "")
+            excerpt = BeautifulSoup(excerpt_raw, "html.parser").get_text()[:240]
             date = entry.get("published", datetime.utcnow().isoformat())
             author = entry.get("author", "Unknown")
             article_url = entry.link
