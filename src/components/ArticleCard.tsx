@@ -8,9 +8,10 @@ interface ArticleCardProps {
   date: string;
   author: string;
   articleUrl: string;
+  image: string;
 }
 
-const ArticleCard = ({ title, excerpt, date, author, articleUrl }: ArticleCardProps) => {
+const ArticleCard = ({ title, excerpt, date, author, articleUrl, image }: ArticleCardProps) => {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col justify-between h-full">
       <div className="p-6 flex flex-col flex-grow">
