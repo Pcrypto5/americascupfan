@@ -30,8 +30,9 @@ if os.path.exists(archive_path):
 else:
     existing = []
 
-new_urls = {a["articleUrl"] for a in articles}
-existing = [a for a in existing if a["articleUrl"] not in new_urls]
+new_titles = {a["title"] for a in articles}
+existing = [a for a in existing if a["title"] not in new_titles]
+
 all_articles = articles + existing
 
 with open(archive_path, "w", encoding="utf-8") as f:
