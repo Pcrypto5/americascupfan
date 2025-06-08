@@ -1,3 +1,4 @@
+import AllArticles from "./pages/all-articles";
 import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -99,6 +100,7 @@ const AppRoutes = () => {
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/cookies" element={<Cookies />} />
+      <Route path="/all-articles" element={<AllArticles />} /> {/* ✅ Aggiunta */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
