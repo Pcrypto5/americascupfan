@@ -101,7 +101,13 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.length > 0 ? (
               articles.map(article => (
-                <ArticleCard key={article.id} article={article} />
+                <ArticleCard
+                  key={article.id}
+                  title={article.title}
+                  date={article.date}
+                  author={article.author}
+                  content={article.content}
+                />
               ))
             ) : (
               <p className="text-center col-span-3 text-gray-600">Loading latest articles...</p>
