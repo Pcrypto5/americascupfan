@@ -6,6 +6,14 @@ import VideoCard from "../components/VideoCard";
 import ArticleCard from "../components/ArticleCard";
 import { Button } from "@/components/ui/button";
 
+interface Article {
+  id: number;
+  title: string;
+  date: string;
+  author: string;
+  content: string;
+}
+
 const Index = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,7 +46,7 @@ const Index = () => {
     document.body.appendChild(script);
   }, []);
 
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
     fetch("/data/latest_articles.json")
@@ -127,7 +135,7 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.length > 0 ? (
-              articles.map(article => (
+              articles.map((article) => (
                 <ArticleCard 
                   key={article.id}
                   article={article}

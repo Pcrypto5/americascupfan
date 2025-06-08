@@ -3,25 +3,28 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
-interface ArticleProps {
+interface Article {
+  id: number;
   title: string;
   date: string;
   author: string;
   content: string;
 }
 
-const ArticleCard = ({ title, date, author, content }: ArticleProps) => {
-  const [language, setLanguage] = useState<"it" | "en">("it");
+interface Props {
+  article: Article;
+}
 
-  // Separazione contenuti bilingue
-  const [contentIt, contentEn] = content.split("###");
+const ArticleCard = ({ article }: Props) => {
+  const [language, setLanguage] = useState<"it" | "en">("it");
+  const [contentIt, contentEn] = article.content.split("###");
 
   return (
     <Dialog>
       <div className="bg-white rounded-xl p-6 shadow text-left">
-        <p className="text-sm text-gray-500 mb-1">{new Date(date).toUTCString()}</p>
-        <h2 className="text-xl font-semibold mb-2">{title}</h2>
-        <p className="text-sm text-gray-600 mb-4">By {author}</p>
+        <p className="text-sm text-gray-500 mb-1">{new Date(article.date).toUTCString()}</p>
+        <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
+        <p className="text-sm text-gray-600 mb-4">By {article.author}</p>
 
         <DialogTrigger asChild>
           <Button className="w-full">Read Article</Button>
@@ -29,7 +32,7 @@ const ArticleCard = ({ title, date, author, content }: ArticleProps) => {
 
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
+            <DialogTitle>{article.title}</DialogTitle>
           </DialogHeader>
           <div className="flex justify-end gap-2 mb-4">
             <Button variant={language === "it" ? "default" : "outline"} size="sm" onClick={() => setLanguage("it")}>IT</Button>
