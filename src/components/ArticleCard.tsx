@@ -6,36 +6,26 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "@/components/ui/dialog";
 
-// Definisci il tipo Article
-export interface Article {
-  id: number;
+export interface ArticleProps {
   title: string;
   date: string;
   author: string;
   content: string;
 }
 
-// L'interfaccia attende un unico prop `article`
-export interface ArticleCardProps {
-  article: Article;
-}
-
-const ArticleCard = ({ article }: ArticleCardProps) => {
+const ArticleCard = ({ title, date, author, content }: ArticleProps) => {
   const [language, setLanguage] = useState<"it" | "en">("it");
-  // Dividi il contenuto bilingue in base al separatore ###
-  const [contentIt, contentEn] = article.content.split("###");
+  const [contentIt, contentEn] = content.split("###");
 
   return (
     <Dialog>
-      <div className="bg-white rounded-xl p-6 shadow">
-        <p className="text-sm text-gray-500 mb-1">
-          {new Date(article.date).toUTCString()}
-        </p>
-        <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
-        <p className="text-sm text-gray-600 mb-4">By {article.author}</p>
+      <div className="bg-white rounded-xl p-6 shadow text-left">
+        <p className="text-sm text-gray-500 mb-1">{new Date(date).toUTCString()}</p>
+        <h2 className="text-xl font-semibold mb-2">{title}</h2>
+        <p className="text-sm text-gray-600 mb-4">By {author}</p>
 
         <DialogTrigger asChild>
           <Button className="w-full">Read Article</Button>
@@ -43,8 +33,9 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>{article.title}</DialogTitle>
+            <DialogTitle>{title}</DialogTitle>
           </DialogHeader>
+
           <div className="flex justify-end gap-2 mb-4">
             <Button
               variant={language === "it" ? "default" : "outline"}
@@ -61,10 +52,11 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
               EN
             </Button>
           </div>
+
           <div className="whitespace-pre-line text-sm leading-relaxed max-h-[60vh] overflow-y-auto">
             {language === "it"
               ? contentIt?.trim()
-              : contentEn?.trim() || contentIt?.trim()}
+              : (contentEn?.trim() || contentIt?.trim())}
           </div>
         </DialogContent>
       </div>
