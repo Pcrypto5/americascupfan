@@ -1,4 +1,3 @@
-// src/pages/Index.tsx
 import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
@@ -8,12 +7,12 @@ import ArticleCard, { Article } from "../components/ArticleCard";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
-  // Scroll top
+  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Cookie consent
+  // Cookie consent script initialization
   useEffect(() => {
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -25,7 +24,10 @@ const Index = () => {
     script.onload = () => {
       // @ts-ignore
       window.cookieconsent.initialise({
-        palette: { popup: { background: "#002b45" }, button: { background: "#00c2a8" } },
+        palette: {
+          popup: { background: "#002b45" },
+          button: { background: "#00c2a8" }
+        },
         theme: "classic",
         content: {
           message: "Utilizziamo i cookie per migliorare la tua esperienza sul sito.",
@@ -42,9 +44,9 @@ const Index = () => {
 
   useEffect(() => {
     fetch("/data/latest_articles.json")
-      .then((res) => res.json())
-      .then((data) => setArticles(data))
-      .catch((err) => console.error("Errore nel caricamento degli articoli:", err));
+      .then(res => res.json())
+      .then(data => setArticles(data))
+      .catch(err => console.error("Errore nel caricamento degli articoli: ", err));
   }, []);
 
   const videos = [
@@ -78,7 +80,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <Hero
+      <Hero 
         title="America's Cup Latest"
         subtitle="Stay updated with the latest news, videos, and stories from the world's premier sailing competition."
         backgroundImage="/images/napoli-notte-hd-1600x600.jpg"
@@ -97,9 +99,10 @@ const Index = () => {
               <a href="/watch-read">View All</a>
             </Button>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {videos.map((video) => (
-              <VideoCard
+            {videos.map(video => (
+              <VideoCard 
                 key={video.id}
                 title={video.title}
                 thumbnail={video.thumbnail}
@@ -125,11 +128,8 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.length > 0 ? (
-              articles.map((article: Article) => (
-                <ArticleCard
-                  key={article.id}
-                  article={article}
-                />
+              articles.map(article => (
+                <ArticleCard key={article.id} article={article} />
               ))
             ) : (
               <p className="text-center col-span-3 text-gray-600">

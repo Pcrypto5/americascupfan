@@ -1,31 +1,32 @@
 // src/components/ArticleCard.tsx
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
-export interface ArticleProps {
+// Export Article interface for reuse
+export interface Article {
+  id: number;
   title: string;
   date: string;
   author: string;
   content: string;
 }
 
-const ArticleCard = ({ title, date, author, content }: ArticleProps) => {
+interface ArticleCardProps {
+  article: Article;
+}
+
+const ArticleCard = ({ article }: ArticleCardProps) => {
   const [language, setLanguage] = useState<"it" | "en">("it");
-  const [contentIt, contentEn] = content.split("###");
+  const [contentIt = '', contentEn = ''] = article.content.split("###");
 
   return (
     <Dialog>
       <div className="bg-white rounded-xl p-6 shadow text-left">
-        <p className="text-sm text-gray-500 mb-1">{new Date(date).toUTCString()}</p>
-        <h2 className="text-xl font-semibold mb-2">{title}</h2>
-        <p className="text-sm text-gray-600 mb-4">By {author}</p>
+        <p className="text-sm text-gray-500 mb-1">{new Date(article.date).toUTCString()}</p>
+        <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
+        {/* We always author our own rewritten articles */}
+        <p className="text-sm text-gray-600 mb-4">By {article.author}</p>
 
         <DialogTrigger asChild>
           <Button className="w-full">Read Article</Button>
@@ -33,30 +34,25 @@ const ArticleCard = ({ title, date, author, content }: ArticleProps) => {
 
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
+            <DialogTitle>{article.title}</DialogTitle>
           </DialogHeader>
-
           <div className="flex justify-end gap-2 mb-4">
             <Button
               variant={language === "it" ? "default" : "outline"}
               size="sm"
               onClick={() => setLanguage("it")}
-            >
-              IT
-            </Button>
+            >IT</Button>
             <Button
               variant={language === "en" ? "default" : "outline"}
               size="sm"
               onClick={() => setLanguage("en")}
-            >
-              EN
-            </Button>
+            >EN</Button>
           </div>
-
           <div className="whitespace-pre-line text-sm leading-relaxed max-h-[60vh] overflow-y-auto">
             {language === "it"
-              ? contentIt?.trim()
-              : (contentEn?.trim() || contentIt?.trim())}
+              ? contentIt.trim()
+              : (contentEn.trim() || contentIt.trim())
+            }
           </div>
         </DialogContent>
       </div>
