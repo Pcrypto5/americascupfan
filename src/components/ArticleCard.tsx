@@ -1,37 +1,74 @@
-
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+// src/components/ArticleCard.tsx
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
-interface ArticleCardProps {
+// Definisci il tipo Article
+export interface Article {
+  id: number;
   title: string;
-  excerpt: string;
   date: string;
   author: string;
-  articleUrl: string;
-  image: string;
+  content: string;
 }
 
-const ArticleCard = ({ title, excerpt, date, author, articleUrl, image }: ArticleCardProps) => {
+// L'interfaccia attende un unico prop `article`
+export interface ArticleCardProps {
+  article: Article;
+}
+
+const ArticleCard = ({ article }: ArticleCardProps) => {
+  const [language, setLanguage] = useState<"it" | "en">("it");
+  // Dividi il contenuto bilingue in base al separatore ###
+  const [contentIt, contentEn] = article.content.split("###");
+
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col justify-between h-full">
-      <div className="p-6 flex flex-col flex-grow">
-        <div className="text-sm text-green-600 mb-2">{date}</div>
-        <h3 className="text-lg font-bold mb-2">{title}</h3>
-        <p className="text-gray-600 text-sm mb-4">{excerpt}</p>
-        <p className="text-sm text-gray-500 mt-auto">By {author}</p>
+    <Dialog>
+      <div className="bg-white rounded-xl p-6 shadow">
+        <p className="text-sm text-gray-500 mb-1">
+          {new Date(article.date).toUTCString()}
+        </p>
+        <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
+        <p className="text-sm text-gray-600 mb-4">By {article.author}</p>
+
+        <DialogTrigger asChild>
+          <Button className="w-full">Read Article</Button>
+        </DialogTrigger>
+
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{article.title}</DialogTitle>
+          </DialogHeader>
+          <div className="flex justify-end gap-2 mb-4">
+            <Button
+              variant={language === "it" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setLanguage("it")}
+            >
+              IT
+            </Button>
+            <Button
+              variant={language === "en" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setLanguage("en")}
+            >
+              EN
+            </Button>
+          </div>
+          <div className="whitespace-pre-line text-sm leading-relaxed max-h-[60vh] overflow-y-auto">
+            {language === "it"
+              ? contentIt?.trim()
+              : contentEn?.trim() || contentIt?.trim()}
+          </div>
+        </DialogContent>
       </div>
-      <div className="p-4 pt-0">
-        <a
-          href={articleUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Button variant="outline" className="w-full">
-            Read Article
-          </Button>
-        </a>
-      </div>
-    </div>
+    </Dialog>
   );
 };
 
