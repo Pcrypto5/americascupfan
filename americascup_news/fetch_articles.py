@@ -1,82 +1,122 @@
 import os
-import openai
+import json
+import re
+import requests
 import feedparser
 from datetime import datetime
-from dotenv import load_dotenv
-from bs4 import BeautifulSoup
 from slugify import slugify
+from dotenv import load_dotenv
+import openai
 
-# Carica API Key
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+UNSPLASH_ACCESS_KEY = os.getenv("UNSPLASH_ACCESS_KEY")
 
-# Fonti RSS
+openai.api_key = OPENAI_API_KEY
+
 RSS_FEEDS = [
     "https://news.google.com/rss/search?q=america's+cup+sailing&hl=en-US&gl=US&ceid=US:en",
     "https://www.sailingscuttlebutt.com/feed/",
     "https://www.yachtingworld.com/feed"
 ]
 
-# Funzione per generare testo
-def generate_article(title, excerpt):
+def clean_title(title):
+    return re.split(r"\s*[-|–]\s*", title)[0].strip()
+
+def fetch_image_url(query):
+    try:
+        url = f"https://api.unsplash.com/photos/random?query={query}&orientation=landscape&client_id={UNSPLASH_ACCESS_KEY}"
+        response = requests.get(url)
+        return response.json()["urls"]["regular"]
+    except:
+        return "/images/placeholder.jpg"
+
+def generate_bilingual_article(title, excerpt):
     prompt = f"""
-Sei un giornalista esperto di vela. Riscrivi in italiano questo articolo in modo originale, chiaro e informativo. Evita ogni riferimento diretto alla fonte. L'articolo deve essere leggibile da un pubblico generale e focalizzato sull'America's Cup.
+Scrivi un articolo breve in stile giornalistico e ottimizzato per SEO. Fornisci due versioni: prima in ITALIANO, poi in INGLESE, separate da ###.
 
 Titolo: {title}
-Testo: {excerpt}
 
-Testo riformulato:"""
-
+Introduzione: {excerpt}
+"""
     try:
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=700,
-            temperature=0.7
+            max_tokens=1000,
+            temperature=0.8
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
-        print(f"Errore OpenAI: {e}")
+        print("Errore OpenAI:", e)
         return excerpt
 
-# Funzione principale
 def fetch_articles():
     articles = []
-    seen_urls = set()
+    seen = set()
     article_id = 1
 
     for feed_url in RSS_FEEDS:
         feed = feedparser.parse(feed_url)
-
         for entry in feed.entries:
-            if entry.link in seen_urls:
+            if entry.link in seen:
                 continue
-            seen_urls.add(entry.link)
+            seen.add(entry.link)
 
-            title = entry.title
-
-            # Pulisci excerpt da HTML
-            excerpt_raw = entry.get("summary", "")
-            excerpt = BeautifulSoup(excerpt_raw, "html.parser").get_text()[:500]
-
-            content = generate_article(title, excerpt)
+            raw_title = entry.title
+            title = clean_title(raw_title)
+            excerpt = entry.get("summary", "")[:240]
             date = entry.get("published", datetime.utcnow().isoformat())
+            image = fetch_image_url("america's cup sailing")
+            content = generate_bilingual_article(title, excerpt)
+            slug = slugify(title)
 
-            article = {
+            articles.append({
                 "id": article_id,
                 "title": title,
+                "excerpt": excerpt,
                 "date": date,
                 "author": "AmericasCupFan",
+                "articleUrl": f"/articles/{slug}",
+                "image": image,
                 "content": content,
-                "keywords": ["America's Cup", "vela", "regata"]
-            }
+            })
 
-            articles.append(article)
             article_id += 1
-
             if len(articles) >= 3:
-                break
-        if len(articles) >= 3:
-            break
-
+                return articles
     return articles
+
+def save_articles():
+    articles = fetch_articles()
+    base_dir = os.path.dirname(__file__)
+    data_dir = os.path.join(base_dir, "..", "public", "data")
+    archive_dir = os.path.join(base_dir, "..", "public", "archive")
+
+    os.makedirs(data_dir, exist_ok=True)
+    os.makedirs(archive_dir, exist_ok=True)
+
+    latest_path = os.path.join(data_dir, "latest_articles.json")
+    with open(latest_path, "w", encoding="utf-8") as f:
+        json.dump(articles, f, indent=2, ensure_ascii=False)
+
+    month_id = datetime.utcnow().strftime("%Y-%m")
+    archive_path = os.path.join(archive_dir, f"{month_id}.json")
+    if os.path.exists(archive_path):
+        with open(archive_path, "r", encoding="utf-8") as f:
+            existing = json.load(f)
+    else:
+        existing = []
+
+    new_urls = {a["articleUrl"] for a in articles}
+    filtered = [a for a in existing if a["articleUrl"] not in new_urls]
+    all_articles = articles + filtered
+
+    with open(archive_path, "w", encoding="utf-8") as f:
+        json.dump(all_articles, f, indent=2, ensure_ascii=False)
+
+    print(f"[✅] latest_articles.json aggiornato con {len(articles)} articoli")
+    print(f"[📦] Archivio aggiornato in archive/{month_id}.json")
+
+if __name__ == "__main__":
+    save_articles()

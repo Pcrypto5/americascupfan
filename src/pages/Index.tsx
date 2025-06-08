@@ -7,12 +7,10 @@ import ArticleCard from "../components/ArticleCard";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
-  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Inject Cookie Consent script
   useEffect(() => {
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -115,7 +113,6 @@ const Index = () => {
         </div>
       </section>
 
-
       <section className="section-padding bg-gray-50">
         <div className="container-padding max-w-7xl mx-auto">
           <div className="flex justify-between items-end mb-10">
@@ -133,12 +130,7 @@ const Index = () => {
               articles.map(article => (
                 <ArticleCard 
                   key={article.id}
-                  title={article.title}
-                  excerpt={article.excerpt}
-                  image={article.image}
-                  date={article.date}
-                  author={article.author}
-                  articleUrl={article.articleUrl}
+                  article={article}
                 />
               ))
             ) : (
