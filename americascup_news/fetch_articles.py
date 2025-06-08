@@ -35,23 +35,28 @@ def fetch_image_url(query: str) -> str:
 
 
 def generate_article(title: str, excerpt: str) -> str:
-    prompt = f"""Scrivi un articolo breve, in italiano, ottimizzato per la SEO e in stile giornalistico, basato sul titolo e l'introduzione forniti. ###
-Titolo: {title}
-
-Introduzione: {excerpt}
-
-Articolo:"""
+    """
+    Genera due versioni dell'articolo: prima in italiano, poi in inglese,
+    separate da ###. Ogni sezione è un paragrafo completo ottimizzato SEO.
+    """
+    prompt = (
+        f"Genera un breve articolo basato sul titolo e sull'introduzione fornite."
+        f"\n\nTitolo: {title}\nIntroduzione: {excerpt}\n\n"
+        "Restituisci due versioni del testo: la prima in italiano, la seconda in inglese, "
+        "separate esattamente da ###. Ogni sezione deve essere un paragrafo completo."
+    )
     try:
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=700,
-            temperature=0.8,
+            max_tokens=800,
+            temperature=0.7,
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
         print(f"Errore OpenAI: {e}")
-        return excerpt
+        # fallback: ritorna solo l'excerpt duplicato per non bloccare il flow
+        return f"{excerpt} ###{excerpt}"
 
 
 def fetch_articles() -> list[dict]:
@@ -66,15 +71,17 @@ def fetch_articles() -> list[dict]:
                 continue
             seen_urls.add(entry.link)
 
-            title = entry.title
+            # Pulizia titolo e fonte
+            parts = entry.title.rsplit(' - ', 1)
+            title = parts[0]
+            # Non salviamo la fonte, l'articolo è nostro
+
             excerpt = entry.get("summary", "").strip()
             date = entry.get("published", datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT"))
-            author = entry.get("author", "AmericasCupFan")
-            article_url = entry.link
+            author = "AmericasCupFan"
 
-            # Contenuto generato da OpenAI
+            # Genera contenuto bilingue
             content = generate_article(title, excerpt)
-            # Immagine
             image_url = fetch_image_url("america's cup sailing")
             slug = slugify(title)
 
