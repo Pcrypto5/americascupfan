@@ -125,13 +125,10 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.length > 0 ? (
-              articles.map(({ id, title, date, author, content }) => (
+              articles.map((article: Article) => (
                 <ArticleCard
-                  key={id}
-                  title={title}
-                  date={date}
-                  author={author}
-                  content={content}
+                  key={article.id}
+                  article={article}
                 />
               ))
             ) : (
