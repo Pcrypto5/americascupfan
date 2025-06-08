@@ -1,18 +1,11 @@
+// src/pages/Index.tsx
 import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import VideoCard from "../components/VideoCard";
-import ArticleCard from "../components/ArticleCard";
+import ArticleCard, { Article } from "../components/ArticleCard";
 import { Button } from "@/components/ui/button";
-
-interface Article {
-  id: number;
-  title: string;
-  date: string;
-  author: string;
-  content: string;
-}
 
 const Index = () => {
   useEffect(() => {
@@ -56,36 +49,14 @@ const Index = () => {
   }, []);
 
   const videos = [
-    {
-      id: 1,
-      title: "America's Cup Race Day Highlights - Emirates Team New Zealand vs INEOS Team UK",
-      thumbnail: "https://source.unsplash.com/photo-1482938289607-e9573fc25ebb",
-      duration: "12:34",
-      date: "March 15, 2023",
-      videoUrl: "https://www.youtube.com/watch?v=D0_Csby53sI"
-    },
-    {
-      id: 2,
-      title: "AC75 Technology Explained: How These Boats Fly Above Water",
-      thumbnail: "https://source.unsplash.com/photo-1469474968028-56623f02e42e",
-      duration: "08:21",
-      date: "February 28, 2023",
-      videoUrl: "https://www.youtube.com/watch?v=VQUl_hf6yo8"
-    },
-    {
-      id: 3,
-      title: "The Evolution of America's Cup Boats Through History",
-      thumbnail: "https://source.unsplash.com/photo-1518877593221-1f28583780b4",
-      duration: "15:47",
-      date: "January 12, 2023",
-      videoUrl: "https://www.youtube.com/watch?v=I30FSVSdVhI"
-    }
+    { id: 1, title: "America's Cup Race Day Highlights - Emirates Team New Zealand vs INEOS Team UK", thumbnail: "https://source.unsplash.com/photo-1482938289607-e9573fc25ebb", duration: "12:34", date: "March 15, 2023", videoUrl: "https://www.youtube.com/watch?v=D0_Csby53sI" },
+    { id: 2, title: "AC75 Technology Explained: How These Boats Fly Above Water", thumbnail: "https://source.unsplash.com/photo-1469474968028-56623f02e42e", duration: "08:21", date: "February 28, 2023", videoUrl: "https://www.youtube.com/watch?v=VQUl_hf6yo8" },
+    { id: 3, title: "The Evolution of America's Cup Boats Through History", thumbnail: "https://source.unsplash.com/photo-1518877593221-1f28583780b4", duration: "15:47", date: "January 12, 2023", videoUrl: "https://www.youtube.com/watch?v=I30FSVSdVhI" }
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-
       <Hero 
         title="America's Cup Latest"
         subtitle="Stay updated with the latest news, videos, and stories from the world's premier sailing competition."
@@ -101,14 +72,11 @@ const Index = () => {
               <h4 className="text-sm text-americas-teal font-medium mb-2">WATCH</h4>
               <h2 className="text-3xl font-bold">Featured Videos</h2>
             </div>
-            <Button variant="link" className="text-americas-navy">
-              View All
-            </Button>
+            <Button variant="link" className="text-americas-navy"><a href="/watch-read">View All</a></Button>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {videos.map(video => (
-              <VideoCard 
+              <VideoCard
                 key={video.id}
                 title={video.title}
                 thumbnail={video.thumbnail}
@@ -128,40 +96,17 @@ const Index = () => {
               <h4 className="text-sm text-americas-teal font-medium mb-2">READ</h4>
               <h2 className="text-3xl font-bold">Latest Articles</h2>
             </div>
-            <Button variant="link" className="text-americas-navy">
-              <a href="/all-articles">View All</a>
-            </Button>
+            <Button variant="link" className="text-americas-navy"><a href="/all-articles">View All</a></Button>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {articles.length > 0 ? (
-              articles.map((article) => (
-                <ArticleCard 
-                  key={article.id}
-                  article={article}
-                />
+              articles.map(article => (
+                <ArticleCard key={article.id} article={article} />
               ))
             ) : (
-              <p className="text-center col-span-3 text-gray-600">
-                Loading latest articles...
-              </p>
+              <p className="text-center col-span-3 text-gray-600">Loading latest articles...</p>
             )}
           </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-americas-navy text-white">
-        <div className="container-padding max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Never Miss an Update</h2>
-          <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Subscribe to our newsletter for exclusive America's Cup content, behind-the-scenes access, and expert analysis.
-          </p>
-          <Button 
-            asChild
-            className="bg-americas-teal hover:bg-americas-teal/90 text-white px-8 py-6 rounded-full text-base"
-          >
-            <a href="/subscribe#form">Subscribe Now</a>
-          </Button>
         </div>
       </section>
 
