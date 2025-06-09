@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+>
+  <!-- 1st article -->
+  <url>
+    <loc>https://americascupfan-production.up.railway.app/articles/an-americas-cup-without-an-american-boat-american-magic-says-it-may-not-sail-in-naples</loc>
+    <news:news>
+      <news:publication>
+        <news:name>AmericasCupFan</news:name>
+        <news:language>it</news:language>
+      </news:publication>
+      <news:publication_date>2025-05-22T07:00:00Z</news:publication_date>
+      <news:title>An America’s Cup without an American boat? American Magic says it may not sail in Naples</news:title>
+      <news:keywords>America's Cup, vela, regata</news:keywords>
+    </news:news>
+  </url>
+
+  <!-- 2nd article -->
+  <url>
+    <loc>https://americascupfan-production.up.railway.app/articles/america-s-cup-luna-rossa-signs-another-sponsor</loc>
+    <news:news>
+      <news:publication>
+        <news:name>AmericasCupFan</news:name>
+        <news:language>it</news:language>
+      </news:publication>
+      <news:publication_date>2025-06-05T14:49:00Z</news:publication_date>
+      <news:title>America's Cup: Luna Rossa signs another sponsor</news:title>
+      <news:keywords>America's Cup, vela, regata</news:keywords>
+    </news:news>
+  </url>
+
+  <!-- 3rd article -->
+  <url>
+    <loc>https://americascupfan-production.up.railway.app/articles/american-magic-threatens-to-quit-38th-america-s-cup</loc>
+    <news:news>
+      <news:publication>
+        <news:name>AmericasCupFan</news:name>
+        <news:language>it</news:language>
+      </news:publication>
+      <news:publication_date>2025-05-22T07:00:00Z</news:publication_date>
+      <news:title>American Magic threatens to quit 38th America's Cup</news:title>
+      <news:keywords>America's Cup, vela, regata</news:keywords>
+    </news:news>
+  </url>
+</urlset>

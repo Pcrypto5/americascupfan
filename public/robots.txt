@@ -18,3 +18,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://americascupfan.vercel.app/sitemap.xml
+
+Sitemap: https://americascupfan-production.up.railway.app/news-sitemap.xml
