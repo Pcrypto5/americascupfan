@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
     <title>AmericasCupFan - Ultimate America's Cup Resource</title>
     <meta name="description" content="The ultimate fan website for America's Cup sailing enthusiasts, featuring news, history, videos, and analysis." />
     <meta name="author" content="AmericasCupFan" />
@@ -16,7 +17,14 @@
     <meta name="twitter:site" content="@americascupfan" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-    <!-- Sitemap per Google News -->
+    <!-- Sitemap generale per i motori di ricerca -->
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="/sitemap.xml"
+    />
+    <!-- News Sitemap ottimizzata per Google News -->
     <link
       rel="sitemap"
       type="application/xml"
@@ -27,8 +35,6 @@
 
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
