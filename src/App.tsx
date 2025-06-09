@@ -1,4 +1,5 @@
 import AllArticles from "./pages/all-articles";
+import ArticlePage from "./pages/articles/ArticlePage";  // <-- importa il nuovo componente
 import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -46,7 +47,7 @@ const loadGoogleAnalytics = () => {
   const script2 = document.createElement("script");
   script2.innerHTML = `
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){dataLayer.push(arguments);}  
     gtag('js', new Date());
     gtag('config', '${GA_MEASUREMENT_ID}');
   `;
@@ -65,7 +66,7 @@ const usePageTracking = () => {
     }
   }, [location.pathname]);
 
-// Traccia scroll oltre il 50%
+  // Traccia scroll oltre il 50%
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
@@ -87,6 +88,7 @@ const usePageTracking = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 };
+
 const AppRoutes = () => {
   usePageTracking();
 
@@ -100,7 +102,8 @@ const AppRoutes = () => {
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/cookies" element={<Cookies />} />
-      <Route path="/all-articles" element={<AllArticles />} /> {/* ✅ Aggiunta */}
+      <Route path="/all-articles" element={<AllArticles />} /> {/* ✅ Aggiunta pagina elenco articoli */}
+      <Route path="/articles/:slug" element={<ArticlePage />} /> {/* ✅ Aggiunta pagina dettaglio articolo */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
