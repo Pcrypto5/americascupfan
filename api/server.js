@@ -1,29 +1,31 @@
-// api/index.js
+// server.js
 import express from "express";
 import path from "path";
-// importa qui le tue API, ad es.:
-// import apiRoutes from "./routes.js";
 
 const app = express();
 
-// 1) Servi in modo statico tutto ciò che sta in /public
+// 1) Servi staticamente ogni file in /public
 app.use(
   express.static(
     path.join(process.cwd(), "public")
   )
 );
 
-// 2) (opzionale) health-check o altre route API
+// 2) Health-check (opzionale)
 app.get("/health", (req, res) => {
-  res.json({ status: "ok" });
+  return res.json({ status: "ok" });
 });
 
-// 3) Monta qui le tue API REST se le hai:
+// 3) (Qui potresti montare altre API, se le hai)
+// import apiRoutes from "./api/routes.js";
 // app.use("/api", apiRoutes);
 
-// 4) Catch-all: per ogni altra richiesta, servi index.html (React Router)
+// 4) Tutte le altre route vanno a React Router: serve index.html
 app.get("*", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "public", "index.html"));
+  return res.sendFile(path.join(process.cwd(), "public", "index.html"));
 });
 
-export default app;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
