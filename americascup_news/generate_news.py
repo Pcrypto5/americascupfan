@@ -2,6 +2,7 @@
 
 import json
 import os
+import subprocess
 from datetime import datetime
 from fetch_articles import fetch_articles
 
@@ -46,3 +47,10 @@ with open(archive_path, "w", encoding="utf-8") as f:
 
 print(f"[✅] ✅ latest_articles.json aggiornato con {len(articles)} articoli.")
 print(f"[📦] Archivio aggiornato in archive/{month_id}.json")
+
+# === 3. Rigenera la sitemap XML ===
+try:
+    sitemap_script = os.path.join(base_dir, "genera_sitemap.py")
+    subprocess.run(["python", sitemap_script], check=True)
+except Exception as e:
+    print(f"[⚠️] Errore durante la generazione della sitemap: {e}")
