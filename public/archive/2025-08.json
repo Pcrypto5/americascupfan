@@ -1,6 +1,48 @@
 [
   {
     "id": 1,
+    "title": "An historic moment for the America's Cup, but the real work starts now",
+    "date": "Fri, 15 Aug 2025 03:03:00 GMT",
+    "author": "AmericasCupFan",
+    "articleUrl": "/articles/an-historic-moment-for-the-america-s-cup-but-the-real-work-starts-now",
+    "image": "https://images.unsplash.com/photo-1592967887378-a6d42f969cc8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTU0MTQwMTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+    "content": "Venerdì 15 Agosto 2025 segna un momento storico per la Coppa America, ma il vero lavoro inizia ora. L'evento di vela più antico e prestigioso del mondo ha visto un punto di svolta significativo, con cambiamenti rivoluzionari che potrebbero trasformarne il futuro. Tuttavia, mentre la comunità velica celebra questo momento storico, è chiaro che il vero lavoro inizia ora. Il cambiamento radicale introdotto richiederà sforzi considerevoli per garantire un'efficace implementazione e un successo duraturo. L'obiettivo è quello di rendere la Coppa America ancora più competitiva e spettacolare, preservando al contempo la sua storica tradizione.\n\n###\n\nFriday, August 15, 2025, marks a historic moment for the America's Cup, but the real work starts now. The oldest and most prestigious sailing event in the world has seen a significant turning point, with revolutionary changes that could transform its future. However, while the sailing community celebrates this historic moment, it is clear that the real work begins now. The radical change introduced will require considerable efforts to ensure effective implementation and lasting success. The goal is to make the America's Cup even more competitive and spectacular, while preserving its historic tradition.",
+    "keywords": [
+      "America's Cup",
+      "vela",
+      "regata"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "America’s Cup overhauled: Women sailors, battery power, fleet racing and more in new Protocol. Plus hope for Brits?",
+    "date": "Tue, 12 Aug 2025 08:26:58 GMT",
+    "author": "AmericasCupFan",
+    "articleUrl": "/articles/americas-cup-overhauled-women-sailors-battery-power-fleet-racing-and-more-in-new-protocol-plus-hope-for-brits",
+    "image": "https://images.unsplash.com/photo-1735571741700-d8972078822d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTU0MTQwMjB8&ixlib=rb-4.1.0&q=80&w=1080",
+    "content": "La Coppa America, la più antica competizione internazionale di vela, sta per subire una rivoluzione. Il nuovo Protocollo, appena annunciato, prevede una serie di cambiamenti radicali che includono la partecipazione di donne veliste, l'utilizzo di batterie per l'energia, gare di flotta e molto altro. Inoltre, sembra che ci possa essere speranza per i britannici, che non hanno mai vinto la prestigiosa competizione dal suo inizio nel 1851. Il Protocollo rappresenta le regole e le regolamentazioni che governano ogni edizione della Coppa America e la sua introduzione rappresenta un passo avanti significativo per il mondo dello sport nautico.\n\n###\n\nThe America's Cup, the oldest international sailing competition, is about to undergo a revolution. The newly announced Protocol involves a series of radical changes that include the participation of women sailors, the use of batteries for energy, fleet racing and much more. Moreover, there seems to be hope for the Brits, who have never won the prestigious competition since its inception in 1851. The Protocol represents the rules and regulations governing each edition of the America's Cup and its introduction represents a significant step forward for the world of nautical sports.",
+    "keywords": [
+      "America's Cup",
+      "vela",
+      "regata"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "America's Cup teams agree to 'carry VIPs' from 2027",
+    "date": "Tue, 12 Aug 2025 10:30:31 GMT",
+    "author": "AmericasCupFan",
+    "articleUrl": "/articles/america-s-cup-teams-agree-to-carry-vips-from-2027",
+    "image": "https://images.unsplash.com/photo-1602859915273-33ec20f71b12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTU0MTQwMjl8&ixlib=rb-4.1.0&q=80&w=1080",
+    "content": "Nel mondo della vela, la prestigiosa America's Cup si prepara a salpare verso nuovi orizzonti nel 2027. Le squadre partecipanti hanno raggiunto un accordo per 'trasportare VIP' durante le competizioni della Coppa, una mossa che potrebbe aprire la strada a nuove opportunità di business e sponsorizzazioni. La decisione, annunciata il 12 agosto 2025, rappresenta un cambiamento significativo per l'evento tradizionalmente riservato alle gare di vela di alto livello.\n\n###\n\nIn the world of sailing, the prestigious America's Cup is set to chart new waters in 2027. Participating teams have agreed to 'carry VIPs' during the Cup's competitions, a move that could pave the way for new business and sponsorship opportunities. The decision, announced on August 12, 2025, marks a significant shift for the event traditionally reserved for high-level yacht racing.",
+    "keywords": [
+      "America's Cup",
+      "vela",
+      "regata"
+    ]
+  },
+  {
+    "id": 1,
     "title": "Opinion: Protocol for 38th America’s Cup",
     "date": "Fri, 15 Aug 2025 15:39:10 GMT",
     "author": "AmericasCupFan",
@@ -21,20 +63,6 @@
     "articleUrl": "/articles/america-s-cup-the-fish-hooks-in-the-brave-new-protocol-updated",
     "image": "https://images.unsplash.com/photo-1559612692-103d9c23ee8e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTUzMjc2MTh8&ixlib=rb-4.1.0&q=80&w=1080",
     "content": "Il mondo della vela si prepara per un nuovo capitolo dell'America's Cup, uno degli eventi più prestigiosi nel panorama della vela mondiale. Il protocollo aggiornato, audacemente intitolato \"The fish hooks in the Brave, New Protocol\", rappresenta un passaggio rivoluzionario per la competizione, introducendo una serie di novità volte a migliorare le prestazioni delle imbarcazioni e a rendere le regate ancora più avvincenti. Il nuovo protocollo è stato presentato il 12 agosto 2025, e si preannuncia come una pietra miliare nella storia dell'America's Cup.\n\n###\n\nThe sailing world is gearing up for a new chapter of the America's Cup, one of the most prestigious events in the global sailing scene. The updated protocol, boldly titled \"The fish hooks in the Brave, New Protocol,\" represents a revolutionary step for the competition, introducing a series of innovations aimed at improving the performance of the boats and making the races even more exciting. The new protocol was presented on August 12, 2025, and is set to be a milestone in the history of the America's Cup.",
-    "keywords": [
-      "America's Cup",
-      "vela",
-      "regata"
-    ]
-  },
-  {
-    "id": 3,
-    "title": "America’s Cup overhauled: Women sailors, battery power, fleet racing and more in new Protocol. Plus hope for Brits?",
-    "date": "Tue, 12 Aug 2025 08:26:58 GMT",
-    "author": "AmericasCupFan",
-    "articleUrl": "/articles/americas-cup-overhauled-women-sailors-battery-power-fleet-racing-and-more-in-new-protocol-plus-hope-for-brits",
-    "image": "https://images.unsplash.com/photo-1698440261744-834fcb9df401?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTUzMjc2MjZ8&ixlib=rb-4.1.0&q=80&w=1080",
-    "content": "L'America's Cup, uno degli eventi più prestigiosi nel mondo della vela, sta per subire una rivoluzione. Nell'ambito del nuovo Protocollo, saranno introdotte diverse modifiche significative: la presenza di donne veliste, l'uso di energia a batteria, le gare di flotta e molto altro. Il tutto, con una speranza in più per i britannici. Queste innovazioni, annunciate il 12 agosto 2025, rappresentano un cambiamento significativo per la competizione, in linea con l'impegno di sviluppare uno sport più inclusivo e sostenibile. \n\n###\n\nAmerica's Cup, one of the most prestigious events in the sailing world, is about to undergo a revolution. Under the new Protocol, several significant changes will be introduced: the presence of women sailors, the use of battery power, fleet racing, and much more. All this, with an added hope for the Brits. These innovations, announced on August 12, 2025, represent a significant shift for the competition, in line with the commitment to develop a more inclusive and sustainable sport.",
     "keywords": [
       "America's Cup",
       "vela",
