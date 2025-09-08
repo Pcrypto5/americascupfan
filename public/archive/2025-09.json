@@ -1,6 +1,48 @@
 [
   {
     "id": 1,
+    "title": "You just gotta love a good algorithm",
+    "date": "Sun, 07 Sep 2025 22:00:00 GMT",
+    "author": "AmericasCupFan",
+    "articleUrl": "/articles/you-just-gotta-love-a-good-algorithm",
+    "image": "https://images.unsplash.com/photo-1749735787971-296c43800a35?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTczMTQ4MTR8&ixlib=rb-4.1.0&q=80&w=1080",
+    "content": "In un mondo sempre più interconnesso e digitalizzato, non si può non amare un buon algoritmo. Siamo circondati da algoritmi, da quelli che regolano il funzionamento dei nostri smartphone, ai sistemi di raccomandazione di film e serie TV, fino ad arrivare agli algoritmi di trading finanziario. In un articolo del 7 settembre 2025, Sail-World.com celebra la bellezza e l'efficienza degli algoritmi, quei sofisticati processi matematici che stanno alla base di buona parte della tecnologia che utilizziamo quotidianamente. Un buon algoritmo, secondo l'articolo, non è solo una sequenza ben progettata di operazioni, ma un vero e proprio capolavoro di eleganza e precisione, capace di risolvere problemi complessi e di migliorare significativamente la nostra vita.\n\n###\n\nIn an increasingly interconnected and digitized world, you just gotta love a good algorithm. We are surrounded by algorithms, from those that regulate the functioning of our smartphones, to the recommendation systems for movies and TV series, up to the algorithms of financial trading. In an article dated September 7, 2025, Sail-World.com celebrates the beauty and efficiency of algorithms, those sophisticated mathematical processes that underlie much of the technology we use daily. A good algorithm, according to the article, is not just a well-designed sequence of operations, but a real masterpiece of elegance and precision, capable of solving complex problems and significantly improving our lives.",
+    "keywords": [
+      "America's Cup",
+      "vela",
+      "regata"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Interview: From The Other Side - The State of the Sport",
+    "date": "Fri, 05 Sep 2025 13:59:00 GMT",
+    "author": "AmericasCupFan",
+    "articleUrl": "/articles/interview-from-the-other-side-the-state-of-the-sport",
+    "image": "https://images.unsplash.com/photo-1601650701199-60d7cc817fdd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTczMTQ4MjN8&ixlib=rb-4.1.0&q=80&w=1080",
+    "content": "Il mondo dello sport è in continuo cambiamento, mutevole come l'acqua che solca una barca a vela. In un'intervista esclusiva rilasciata a Sail-World.com il 5 Settembre 2025, abbiamo avuto l'opportunità di esplorare la condizione attuale dello sport da una prospettiva unica, quella di chi vive e respira sport quotidianamente. L'intervistato, il cui nome è stato mantenuto anonimo per rispettare la sua privacy, ha condiviso le sue intuizioni, riflessioni e previsioni sul futuro dell'industria dello sport, offrendo una vista dall'altro lato.\n\n###\n\nThe world of sports is constantly evolving, changing as the water that a sailboat cleaves. In an exclusive interview given to Sail-World.com on September 5, 2025, we had the opportunity to explore the current state of sports from a unique perspective - that of someone who lives and breathes sports daily. The interviewee, whose name has been kept anonymous to respect their privacy, shared their insights, reflections, and predictions on the future of the sports industry, offering a view from the other side.",
+    "keywords": [
+      "America's Cup",
+      "vela",
+      "regata"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Cisco’s AI-driven tech set to sail for Luna Rossa’s America’s Cup challenge",
+    "date": "Fri, 29 Aug 2025 07:00:00 GMT",
+    "author": "AmericasCupFan",
+    "articleUrl": "/articles/ciscos-ai-driven-tech-set-to-sail-for-luna-rossas-americas-cup-challenge",
+    "image": "https://images.unsplash.com/photo-1640878975965-8d40705dc90a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTczMTQ4MzV8&ixlib=rb-4.1.0&q=80&w=1080",
+    "content": "Il gigante della tecnologia Cisco ha annunciato che la sua tecnologia guidata dall'intelligenza artificiale sarà utilizzata per la sfida della Coppa America di Luna Rossa. Questo annuncio rappresenta un importante passo avanti nel campo della tecnologia applicata alla vela, con l'IA che promette di rivoluzionare il modo in cui le squadre navigano e competono. L'IA di Cisco sarà incaricata di analizzare una serie di dati in tempo reale, tra cui le condizioni meteorologiche, la posizione della barca, la velocità del vento e molto altro, per fornire ai membri del team Luna Rossa preziose informazioni che potrebbero fare la differenza tra la vittoria e la sconfitta.\n\n###\n\nTech giant Cisco has announced that its AI-driven technology is set to sail for Luna Rossa's America's Cup challenge. This announcement represents a significant step forward in the field of technology applied to sailing, with AI promising to revolutionize the way teams sail and compete. Cisco's AI will be tasked with analyzing a range of real-time data, including weather conditions, boat position, wind speed, and much more, to provide Luna Rossa team members with valuable insights that could make the difference between victory and defeat.",
+    "keywords": [
+      "America's Cup",
+      "vela",
+      "regata"
+    ]
+  },
+  {
+    "id": 1,
     "title": "Cisco’s AI-driven technology to connect and protect Luna Rossa’s America’s Cup Challenge",
     "date": "Fri, 29 Aug 2025 12:02:54 GMT",
     "author": "AmericasCupFan",
@@ -28,20 +70,6 @@
     ]
   },
   {
-    "id": 3,
-    "title": "Interview: From The Other Side - The State of the Sport",
-    "date": "Fri, 05 Sep 2025 13:59:00 GMT",
-    "author": "AmericasCupFan",
-    "articleUrl": "/articles/interview-from-the-other-side-the-state-of-the-sport",
-    "image": "https://images.unsplash.com/photo-1628661114098-0a711362734a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTcyODIzNzd8&ixlib=rb-4.1.0&q=80&w=1080",
-    "content": "Nell'ambito sportivo, è fondamentale avere una visione chiara dello stato attuale delle discipline e delle sfide che esse affrontano. In un'intervista recente, abbiamo avuto l'opportunità di esplorare questi aspetti da un punto di vista diverso, quello dell'altro lato. Questa prospettiva ci permette di guardare oltre i risultati e le prestazioni degli atleti, per concentrarci sulle dinamiche più ampie che influenzano lo sport nel suo complesso. Le questioni affrontate nell'intervista vanno dalla gestione delle federazioni sportive, all'importanza della formazione degli atleti, passando per le sfide poste dalla pandemia e le risposte innovative che il mondo dello sport ha saputo dare.\n\n###\n\nIn the world of sports, it's crucial to have a clear vision of the current state of disciplines and the challenges they face. In a recent interview, we had the opportunity to explore these aspects from a different perspective, from the other side. This view allows us to look beyond the results and performances of athletes, focusing on the broader dynamics that influence sport as a whole. The issues addressed in the interview range from the management of sports federations, to the importance of athlete training, to the challenges posed by the pandemic and the innovative responses that the world of sport has been able to give.",
-    "keywords": [
-      "America's Cup",
-      "vela",
-      "regata"
-    ]
-  },
-  {
     "id": 2,
     "title": "NAPLES SET TO CONTINUE THE YOUTH AMERICA’S CUP – A COMPETITION WHERE THE FUTURE STARS OF THE AMERICA’S CUP EMERGE",
     "date": "Wed, 03 Sep 2025 02:01:00 GMT",
@@ -49,20 +77,6 @@
     "articleUrl": "/articles/naples-set-to-continue-the-youth-americas-cup-a-competition-where-the-future-stars-of-the-americas-cup-emerge",
     "image": "https://images.unsplash.com/photo-1535450535339-38bd424a6d38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTcxNDQ4NjF8&ixlib=rb-4.1.0&q=80&w=1080",
     "content": "La città di Napoli è pronta a ospitare ancora una volta la Youth America's Cup, una competizione in cui emergono le future stelle della America's Cup. Questo evento, che è diventato un appuntamento fisso nel calendario velico internazionale, permette ai giovani talenti di mettersi in mostra e di affinare le loro abilità in previsione di una futura partecipazione alla prestigiosa America's Cup. La Youth America's Cup rappresenta un'opportunità unica per i giovani velisti, offrendo loro l'opportunità di competere in un contesto altamente competitivo e di guadagnare esperienza preziosa.\n\n###\n\nThe city of Naples is set to host the Youth America's Cup once again, a competition where the future stars of the America's Cup emerge. This event, which has become a staple in the international sailing calendar, allows young talents to showcase their skills and hone their abilities in anticipation of future participation in the prestigious America's Cup. The Youth America's Cup represents a unique opportunity for young sailors, offering them the chance to compete in a highly competitive context and gain valuable experience. Please note that this news is current as of Wed, 03 Sep 2025 02:01:00 GMT.",
-    "keywords": [
-      "America's Cup",
-      "vela",
-      "regata"
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Cisco’s AI-driven tech set to sail for Luna Rossa’s America’s Cup challenge",
-    "date": "Fri, 29 Aug 2025 14:08:59 GMT",
-    "author": "AmericasCupFan",
-    "articleUrl": "/articles/ciscos-ai-driven-tech-set-to-sail-for-luna-rossas-americas-cup-challenge",
-    "image": "https://images.unsplash.com/photo-1603331675306-b554ea26d085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NjA3NDJ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NTcwNTU2NDB8&ixlib=rb-4.1.0&q=80&w=1080",
-    "content": "La sfida dell'America's Cup di Luna Rossa si appresta a veleggiare con la tecnologia guidata dall'Intelligenza Artificiale di Cisco. Il colosso globale dell'IT ha sviluppato soluzioni all'avanguardia per ottimizzare le prestazioni della squadra italiana nella prossima edizione della prestigiosa regata. Tramite l'utilizzo di algoritmi di apprendimento automatico e sensori avanzati, l'equipaggio di Luna Rossa sarà in grado di monitorare in tempo reale le condizioni di navigazione e adattare le strategie di gara in base ai dati rilevati. Questo rappresenta un enorme passo avanti nella digitalizzazione del mondo della vela e potrebbe rivoluzionare il modo in cui le squadre si preparano e competono in questa antica e prestigiosa competizione.\n\n###\n\nLuna Rossa's America's Cup challenge is set to sail with Cisco's AI-driven tech. The global IT giant has developed cutting-edge solutions to optimize the Italian team's performance in the upcoming edition of the prestigious regatta. Through the use of machine learning algorithms and advanced sensors, Luna Rossa's crew will be able to monitor real-time sailing conditions and adapt race strategies based on the data collected. This represents a significant leap forward in the digitalization of the sailing world and could revolutionize the way teams prepare and compete in this ancient and prestigious competition.",
     "keywords": [
       "America's Cup",
       "vela",
